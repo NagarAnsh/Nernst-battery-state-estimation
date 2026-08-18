@@ -1,0 +1,362 @@
+/* Charts on the landing page. Tokens come from index.css; nothing here is
+   chart-library specific, so the same rules style any future SVG figure. */
+
+.ch-grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 44px;
+}
+
+@media (max-width: 980px) {
+  .ch-grid2 { grid-template-columns: 1fr; }
+}
+
+/* ------------------------------------------------------------------ card */
+
+.ch-card {
+  margin: 0;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow);
+  padding: 26px 26px 18px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+.ch-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.ch-card__head { margin-bottom: 10px; }
+
+.ch-card__eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: var(--r-pill);
+  padding: 4px 10px;
+  margin-bottom: 12px;
+}
+
+.ch-card__title {
+  font-size: clamp(19px, 2vw, 23px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin: 0 0 6px;
+  color: var(--text);
+}
+
+.ch-card__sub {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-2);
+  max-width: 52ch;
+}
+
+.ch-card__plot { margin-top: 8px; }
+
+.ch-card__foot {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 20px;
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.ch-card__foot b {
+  color: var(--text);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.ch-foot__note {
+  flex: 1 1 100%;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* ------------------------------------------------------------------- svg */
+
+.ch-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: pan-y;
+  overflow: visible;
+}
+
+.ch-grid  { stroke: rgba(0, 0, 0, 0.06); stroke-width: 1; }
+.ch-axis  { stroke: var(--border-strong); stroke-width: 1; }
+
+.ch-tick {
+  font-size: 11px;
+  fill: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.ch-tick--y { text-anchor: end; dominant-baseline: middle; }
+.ch-tick--x { text-anchor: middle; }
+
+.ch-alabel {
+  font-size: 12px;
+  font-weight: 500;
+  fill: var(--text-2);
+  text-anchor: middle;
+}
+
+.ch-line {
+  fill: none;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.ch-line--ocv {
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: chDraw 1.5s var(--ease) forwards;
+}
+
+.ch-line--cyc {
+  opacity: 0.92;
+  transition: opacity 0.25s var(--ease), stroke-width 0.25s var(--ease);
+}
+.ch-line--cyc.is-dim { opacity: 0.15; }
+
+.ch-pt {
+  fill: var(--bg-elev);
+  stroke: var(--accent);
+  stroke-width: 2;
+  transition: r 0.15s var(--ease);
+}
+
+@keyframes chDraw { to { stroke-dashoffset: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ch-line--ocv { animation: none; stroke-dashoffset: 0; }
+  .ch-card { transition: none; }
+}
+
+/* --------------------------------------------------------------- hover UI */
+
+.ch-cross {
+  stroke: var(--text);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+  opacity: 0.35;
+}
+
+.ch-tip__anchor { fill: var(--text); opacity: 0.8; }
+.ch-tip__bg {
+  fill: var(--text);
+  opacity: 0.93;
+}
+.ch-tip__t {
+  fill: #fff;
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+}
+.ch-tip__t.is-head { font-weight: 600; }
+
+/* ----------------------------------------------------------------- inset */
+
+.ch-inset__bg    { fill: var(--bg-subtle); opacity: 0.97; }
+.ch-inset__frame { fill: none; stroke: var(--border-strong); stroke-width: 1; }
+
+/* The window on the full-scale curve that the panel magnifies. */
+.ch-inset__src {
+  fill: rgba(0, 113, 227, 0.07);
+  stroke: var(--border-strong);
+  stroke-width: 1;
+}
+.ch-inset__leader {
+  stroke: var(--border-strong);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.ch-inset__label {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  fill: var(--text-2);
+}
+
+.ch-inset__hint {
+  font-size: 10px;
+  fill: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------- legend */
+
+.ch-legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.ch-legend__lbl {
+  font-size: 12px;
+  color: var(--muted);
+  margin-right: 6px;
+}
+
+.ch-swatch {
+  width: 20px;
+  height: 12px;
+  border: 0;
+  padding: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: transform 0.18s var(--ease), opacity 0.18s var(--ease);
+}
+
+.ch-swatch:hover,
+.ch-swatch.is-on {
+  opacity: 1;
+  transform: scaleY(1.5);
+}
+
+.ch-legend__val {
+  margin-left: 10px;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-2);
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------- loading */
+
+.ch-loading {
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.ch-loading__bar {
+  width: 120px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  background-size: 200% 100%;
+  animation: chShimmer 1.2s linear infinite;
+}
+
+@keyframes chShimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -100% 0; }
+}
+
+/* ------------------------------------------------------------- small screens
+
+   SVG text scales with the viewBox, so on a phone the chart is drawn at ~0.45x
+   and desktop-sized labels become unreadable. Bump the in-SVG type instead of
+   shrinking the chart. */
+
+@media (max-width: 700px) {
+  .ch-card { padding: 20px 16px 14px; }
+  .ch-tick { font-size: 21px; }
+  .ch-alabel { font-size: 23px; }
+  .ch-tip__t { font-size: 21px; }
+  .ch-inset__label { font-size: 19px; }
+  .ch-inset__hint { font-size: 18px; }
+  .ch-pt { stroke-width: 3; }
+  .ch-swatch { width: 16px; }
+}
+
+/* ------------------------------------------------- temperature sweep chart
+
+   The curves are labelled in place at their right-hand end instead of in a
+   legend — with only three of them, a legend costs more than it explains. */
+
+.ch-tlabel {
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.ch-tstrip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.ch-tcell {
+  text-align: left;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--t-accent);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+  cursor: default;
+  font: inherit;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.ch-tcell:hover,
+.ch-tcell.is-on {
+  background: var(--bg-elev);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.ch-tcell__t {
+  font-size: 15px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--t-accent);
+}
+
+.ch-tcell__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12.5px;
+}
+.ch-tcell__row i { font-style: normal; color: var(--muted); }
+.ch-tcell__row b { font-variant-numeric: tabular-nums; }
+
+.ch-tcell__warn {
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--warn);
+}
+
+.ch-line--cyc circle.is-dim,
+circle.is-dim { opacity: 0.15; }
+
+@media (max-width: 700px) {
+  .ch-tlabel { font-size: 19px; }
+  .ch-tstrip { grid-template-columns: 1fr; }
+}
+
+.ch-grid1 { margin-top: 24px; }

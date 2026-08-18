@@ -1,0 +1,50 @@
+# ---------------------------------------------------------------------------
+# IP boundary — deliberately NOT published.
+#
+# ECM-EKF/ holds the Simulink DEKF model, the parameter-identification
+# pipeline and identified cell parameters. That pipeline is the actual product
+# (models are commodity; commissioning a new cell is not), and some of the
+# source data comes from a partner project. This repository is public, so the
+# whole folder stays out of it.
+#
+# It is therefore NOT backed up by this repo. Keep a separate private backup.
+# ---------------------------------------------------------------------------
+ECM-EKF/
+
+# Working notes and internal planning. Not documentation, and they reference
+# partner-project names and local paths that should not be published.
+diary.md
+ROADMAP.md
+
+# ---------------------------------------------------------------------------
+# Ordinary build / tooling noise
+# ---------------------------------------------------------------------------
+node_modules/
+dist/
+dist-ssr/
+*.local
+.vite/
+*.tsbuildinfo
+
+# Editors / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# MATLAB / Simulink artefacts, wherever they land
+*.mat
+*.slxc
+*.asv
+*.autosave
+slprj/

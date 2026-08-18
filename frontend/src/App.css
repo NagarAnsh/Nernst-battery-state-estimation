@@ -1,0 +1,183 @@
+/* =========================================================================
+   Platform (the 5-step wizard) — light premium theme, shares index.css tokens.
+   ========================================================================= */
+.app {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 24px 24px 64px;
+  min-height: 100%;
+}
+
+/* ------------------------------------------------------------------ buttons */
+.btn {
+  border-radius: var(--r-pill);
+  padding: 11px 22px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-elev);
+  color: var(--text);
+  transition: transform 0.12s var(--ease), background 0.2s ease, border-color 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:active { transform: scale(0.97); }
+.btn:disabled { opacity: 0.4; cursor: default; }
+.btn--sm { padding: 8px 16px; font-size: 14px; }
+.btn--lg { padding: 15px 30px; font-size: 17px; }
+.btn--ghost { background: transparent; border-color: var(--border-strong); }
+.btn--ghost:not(:disabled):hover { background: var(--bg-subtle); }
+.btn--primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+  box-shadow: 0 1px 2px rgba(0, 113, 227, 0.3);
+}
+.btn--primary:not(:disabled):hover { background: var(--accent-hover); box-shadow: 0 4px 14px rgba(0, 113, 227, 0.32); }
+
+/* ------------------------------------------------------------------- header */
+.app__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0 22px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+.brand { display: flex; align-items: center; gap: 13px; }
+.brand--btn { background: none; border: none; padding: 0; text-align: left; }
+.brand--btn:hover .brand__title { color: var(--accent); }
+.brand__mark {
+  font-size: 24px; line-height: 1;
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  background: var(--accent-soft);
+  border-radius: 12px;
+  color: var(--accent);
+}
+.brand__title { font-size: 18px; transition: color 0.15s ease; }
+.brand__sub { margin: 3px 0 0; color: var(--muted); font-size: 13px; }
+.env-badge {
+  font-size: 11px; color: var(--muted);
+  border: 1px solid var(--border); border-radius: var(--r-pill);
+  padding: 5px 12px; text-transform: uppercase; letter-spacing: 0.06em;
+}
+
+/* ------------------------------------------------------------------ stepper */
+.stepper {
+  display: flex; gap: 6px;
+  background: var(--bg-subtle);
+  border-radius: var(--r-pill);
+  padding: 6px;
+  margin-bottom: 24px;
+}
+.step {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+  padding: 10px 12px;
+  background: transparent; color: var(--muted);
+  border: none; border-radius: var(--r-pill);
+  transition: all 0.2s var(--ease);
+}
+.step:disabled { cursor: default; opacity: 0.6; }
+.step:not(:disabled):hover { color: var(--text); }
+.step__index {
+  width: 22px; height: 22px; flex: none;
+  display: grid; place-items: center;
+  border-radius: 50%; font-size: 12px; font-weight: 600;
+  background: var(--bg-elev); border: 1px solid var(--border); color: var(--muted);
+}
+.step__label { font-size: 14px; font-weight: 500; }
+.step--active { color: var(--text); background: var(--bg-elev); box-shadow: var(--shadow-sm); }
+.step--active .step__index { background: var(--accent); color: #fff; border-color: var(--accent); }
+.step--done .step__index { background: var(--accent-soft); color: var(--accent); border-color: var(--accent-line); }
+
+/* --------------------------------------------------------------- main/stage */
+.app__main {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 34px;
+  min-height: 440px;
+  box-shadow: var(--shadow);
+}
+.stage__title { font-size: 24px; margin-bottom: 8px; }
+.stage__hint { color: var(--text-2); margin: 0 0 26px; max-width: 70ch; font-size: 15.5px; }
+.subhead { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 26px 0 12px; font-weight: 600; }
+.stage--center { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding-top: 70px; }
+
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+.error { color: var(--danger); }
+
+/* -------------------------------------------------------------------- cards */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+.data-card, .model-card {
+  text-align: left;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px;
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+.data-card:hover, .model-card:hover { border-color: var(--border-strong); transform: translateY(-2px); box-shadow: var(--shadow); }
+.data-card--selected, .model-card--selected { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft), var(--shadow); }
+.data-card--disabled, .model-card--disabled { opacity: 0.55; cursor: default; }
+.data-card--disabled:hover, .model-card--disabled:hover { border-color: var(--border); transform: none; box-shadow: var(--shadow-sm); }
+.data-card__label, .model-card__name { font-weight: 600; margin-bottom: 12px; font-size: 16px; }
+.data-card__meta { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin: 0; }
+.data-card__meta dt { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.data-card__meta dd { margin: 3px 0 0; font-size: 14px; font-weight: 500; }
+.model-card__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.tag {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;
+  background: var(--accent-soft); color: var(--accent);
+  border-radius: var(--r-pill); padding: 3px 9px;
+}
+
+/* -------------------------------------------------------------------- chips */
+.chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.chip {
+  font-size: 13px; padding: 6px 14px;
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--r-pill); color: var(--text-2);
+  transition: all 0.15s ease;
+}
+.chip--button { color: var(--text); }
+.chip--button:hover { border-color: var(--border-strong); }
+.chip--active { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
+
+/* ------------------------------------------------------------------- params */
+.param-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 18px; }
+.param { display: flex; flex-direction: column; gap: 7px; }
+.param > span { font-size: 14px; font-weight: 500; }
+.param input {
+  background: var(--bg); border: 1px solid var(--border-strong); border-radius: var(--r-sm);
+  color: var(--text); padding: 11px 13px; font-size: 15px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.param input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+
+/* --------------------------------------------------------------- inspect */
+.meta-row { display: flex; flex-wrap: wrap; gap: 10px 24px; color: var(--text-2); font-size: 14px; margin-bottom: 20px; }
+.meta-row b { color: var(--text); font-weight: 600; margin-right: 6px; }
+.panel { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--r); padding: 16px; }
+
+/* --------------------------------------------------------------- progress */
+.progress { width: min(520px, 90%); height: 8px; background: var(--bg-subtle); border-radius: var(--r-pill); overflow: hidden; }
+.progress__bar { height: 100%; background: var(--accent); border-radius: var(--r-pill); transition: width 0.25s ease; }
+.run-status { color: var(--text); font-size: 16px; }
+
+/* --------------------------------------------------------------- metrics */
+.metric-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 22px; }
+.metric { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; }
+.metric__value { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.metric__unit { font-size: 13px; color: var(--muted); margin-left: 5px; font-weight: 500; }
+.metric__name { font-size: 13px; color: var(--text-2); margin-top: 6px; }
+
+/* ---------------------------------------------------------------- provenance */
+.provenance { margin-top: 24px; }
+.params { display: block; margin-top: 12px; background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 12px 14px; color: var(--text-2); font-size: 12.5px; overflow-x: auto; }
+
+/* ------------------------------------------------------------------- footer */
+.app__footer { display: flex; justify-content: space-between; margin-top: 22px; }
