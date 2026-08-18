@@ -11,6 +11,18 @@
 # ---------------------------------------------------------------------------
 ECM-EKF/
 
+# ---------------------------------------------------------------------------
+# Raw measurement data — never published.
+#
+# Tens of GB of cycler exports, some of it from partner projects. Large, not
+# ours to redistribute, and pointless in git. Only the small curated JSON in
+# frontend/public/results/ is published, and that is written by the export
+# scripts, not copied from here.
+# ---------------------------------------------------------------------------
+data/
+*.xlsb
+*.xlk
+
 # Working notes and internal planning. Not documentation, and they reference
 # partner-project names and local paths that should not be published.
 diary.md
