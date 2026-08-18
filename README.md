@@ -1,4 +1,4 @@
-# Volt — Battery State-Estimation Platform
+# Nernst — Battery State-Estimation Platform
 
 A web front end for battery state estimation: load a cycling dataset, pick an
 estimator, run it, and read the result with its metrics and provenance.

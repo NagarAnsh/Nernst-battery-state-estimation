@@ -88,7 +88,7 @@ export function Landing({ onLaunch }: Props) {
         <div className="lp-nav__inner">
           <a className="lp-brand" href="#top">
             <span className="lp-brand__mark">⎓</span>
-            <span className="lp-brand__name">Volt</span>
+            <span className="lp-brand__name">Nernst</span>
           </a>
           <div className="lp-nav__links">
             <a href="#models">Models</a>
@@ -258,7 +258,7 @@ export function Landing({ onLaunch }: Props) {
 
       <footer className="lp-footer">
         <div className="lp-footer__inner">
-          <span className="lp-brand"><span className="lp-brand__mark">⎓</span><span className="lp-brand__name">Volt</span></span>
+          <span className="lp-brand"><span className="lp-brand__mark">⎓</span><span className="lp-brand__name">Nernst</span></span>
           <span className="lp-footer__note">Battery State-Estimation Platform · demo build</span>
         </div>
       </footer>

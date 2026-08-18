@@ -70,7 +70,7 @@ export default function App() {
         <button className="brand brand--btn" onClick={() => setView('landing')} aria-label="Back to site">
           <span className="brand__mark">⎓</span>
           <div>
-            <h1 className="brand__title">Volt · Platform</h1>
+            <h1 className="brand__title">Nernst · Platform</h1>
             <p className="brand__sub">Pluggable estimation &amp; benchmarking</p>
           </div>
         </button>
