@@ -60,3 +60,7 @@ pnpm-debug.log*
 *.asv
 *.autosave
 slprj/
+
+# Local Claude Code tooling config (dev-server launch settings). Machine-local,
+# not part of the published project.
+.claude/
